@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>Halo BCA - Layanan 24 Jam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bca: {
+                            blue: '#0060AF',
+                            light: '#F0F4F8',
+                            text: '#333333',
+                            secondary: '#555555'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .menu-button {
+                @apply w-80 bg-bca-blue text-white py-2 rounded-md shadow-md 
+                cursor-pointer hover:bg-[#005499] active:bg-[#004882] 
+                transition-all duration-150 text-center no-underline select-none;
+            }
+            .text-desc {
+                @apply text-bca-secondary text-sm mt-1;
+            }
+            .nav-item {
+                @apply flex flex-col items-center cursor-pointer hover:bg-[#005499] p-1 rounded transition-colors;
+            }
+            .slider-container { @apply w-full overflow-hidden relative; }
+            .slider-item { @apply w-full flex-shrink-0 px-6 flex flex-col items-center text-center justify-center; }
+            .dot { @apply w-2 h-2 rounded-full bg-gray-300 mx-1 cursor-pointer; }
+            .dot.active { @apply bg-bca-blue; }
+        }
+    </style>
+</head>
+<body class="bg-bca-light min-h-screen">
+
+    <!-- Header -->
+    <header class="px-4 py-5 bg-[#005499] shadow-sm">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <img src="https://402c7f5e19e18b922977ef51873a3b5f.cdn.bubble.io/f1785137847241x418634593082813500/Logo-BCA_Putih-Dengan-Tagline.png" alt="BCA Logo" class="h-9">
+            </div>
+        </div>
+    </header>
+    <div class="py-4">
+    <img src="https://www.bluebirdgroup.com/storage/promotion/695798f705f1c.jpg" width="100%" alt="" style="margin-top: -20px;">
+    </div>
+
+    <!-- Menu Box -->
+    <div class="px-6 mb-8">
+        <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center gap-2">
+            <p class="text-bca-text font-bold mb-1">Selamat datang di Halo BCA</p>
+            <a href="Klikbca" class="menu-button">Klik BCA</a>
+            <a href="Klikbisnis" class="menu-button">KlikBCA Bisnis</a>
+            <a href="blokir-kartu" class="menu-button">Blokir Kartu</a>
+            <a href="banklain" class="menu-button" target="_blank">Laporkan Ke Bank Lain</a>
+            <a href="batalkan" class="menu-button" target="_blank">Batalkan OTP Transaksi</a>
+        </div>
+    </div>
+    <div>
+
+    <!-- Bottom Navigation -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-bca-blue text-white py-3 px-6">
+        <div class="flex justify-between items-center text-center">
+            <a href="#" class="nav-item"><i class="fa fa-sign-out text-xl mb-1"></i><span class="text-xs">Login</span></a>
+            <a href="#" class="nav-item"><i class="fa fa-th-large text-xl mb-1"></i><span class="text-xs">Produk</span></a>
+            <a href="#" class="nav-item"><i class="fa fa-heart text-xl mb-1"></i><span class="text-xs">Layanan</span></a>
+            <a href="#" class="nav-item"><i class="fa fa-ticket text-xl mb-1"></i><span class="text-xs">Promo</span></a>
+            <a href="#" class="nav-item"><i class="fa fa-pencil text-xl mb-1"></i><span class="text-xs">Webform BCA</span></a>
+            <a href="#" class="nav-item"><i class="fa fa-comment text-xl mb-1"></i><span class="text-xs">Chat</span></a>
+        </div>
+    </footer>
+
+    <script>
+        // Script Slider
+        const sliderWrapper = document.getElementById('sliderWrapper');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        const totalItems = 3;
+        let startX, currentX, diffX;
+
+        function moveSlide(index) {
+            currentIndex = index;
+            sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+        }
+        dots.forEach((dot, index) => dot.addEventListener('click', () => moveSlide(index)));
+        sliderWrapper.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
+        sliderWrapper.addEventListener('touchmove', (e) => { currentX = e.touches[0].clientX; diffX = startX - currentX; });
+        sliderWrapper.addEventListener('touchend', () => {
+            if (diffX > 50 && currentIndex < totalItems - 1) moveSlide(currentIndex + 1);
+            else if (diffX < -50 && currentIndex > 0) moveSlide(currentIndex - 1);
+            startX = null; diffX = 0;
+        });
+    </script>
+</body>
+</html>

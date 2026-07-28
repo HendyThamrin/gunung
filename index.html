@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+     <meta property="og:image" content="https://ik.imagekit.io/ons708bb1/images%20(6).png?updatedAt=1746352325358" />
+        <meta name="theme-color" content="#00439e" />
+    <title></title>
+    <style>
+        /* Mengatur seluruh halaman */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Gaya untuk pop-up yang memenuhi layar */
+        .popup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white; /* Mengubah menjadi putih penuh */
+        }
+
+        /* Konten dalam pop-up */
+        .popup-content {
+            text-align: center;
+        }
+
+        /* Gaya untuk gambar/logo */
+        .popup-content img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Bagian pop-up -->
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <img src="https://402c7f5e19e18b922977ef51873a3b5f.cdn.bubble.io/f1785217850581x151923739799097340/logo-bca.svg" alt="Logo"> <!-- Ganti 'logo.png' dengan gambar logo kamu -->
+    </div>
+</div>
+
+<script>
+    // Fungsi untuk menampilkan pop-up selama 3 detik, lalu mengarahkan ke halaman register.html
+    setTimeout(function() {
+        // Setelah 3 detik, arahkan ke halaman register
+        window.location.href = "pilihan.html";
+    }, 3000); // 3000 milidetik = 3 detik
+</script>
+
+</body>
+</html>
